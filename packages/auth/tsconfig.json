@@ -1,0 +1,6 @@
+{
+  "extends": "@qsi-medicine/config/tsconfig.base.json",
+  "compilerOptions": {
+    "noEmit": true
+  }
+}

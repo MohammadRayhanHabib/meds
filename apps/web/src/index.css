@@ -1,0 +1,94 @@
+@import "@qsi-medicine/ui/globals.css";
+
+/* ---- QSI Medicine public site tokens ---- */
+@theme {
+  --color-ink: #14302a;       /* text, footer */
+  --color-rx: #1d6b55;        /* pharmacy green, primary actions */
+  --color-rx-soft: #e3efe9;   /* green tint surfaces */
+  --color-paper: #f5f8f6;     /* page background, cool not cream */
+  --color-cold: #2c6a94;      /* cold-chain / refrigeration only */
+  --color-cold-soft: #e4eef5;
+  --color-rule: #d3e0da;
+  --color-mute: #52665f;
+  --color-deep: #0d2a33;      /* navy-teal for dark bands */
+  --color-mint: #e7f2ec;      /* soft section surface */
+  --color-sun: #f0b54a;       /* small warm accent: badges, italics underline */
+  --font-display: "Literata", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+.site {
+  font-family: var(--font-body);
+  background: #ffffff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+:where(.site) :where(h1, h2, h3) {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+.site p {
+  text-wrap: pretty;
+}
+.site :focus-visible {
+  outline: 3px solid var(--color-cold);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+}
+
+.prose-measure {
+  max-width: 66ch;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .chain-reveal > li {
+    animation: chain-in 480ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+  .chain-reveal > li:nth-child(2) { animation-delay: 60ms; }
+  .chain-reveal > li:nth-child(3) { animation-delay: 120ms; }
+  .chain-reveal > li:nth-child(4) { animation-delay: 180ms; }
+  .chain-reveal > li:nth-child(5) { animation-delay: 240ms; }
+  .chain-reveal > li:nth-child(6) { animation-delay: 300ms; }
+  .chain-reveal > li:nth-child(7) { animation-delay: 360ms; }
+}
+@keyframes chain-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: none; }
+}
+
+.accent-italic {
+  font-style: italic;
+  color: var(--color-rx);
+  background: linear-gradient(transparent 72%, rgba(240, 181, 74, 0.45) 72%);
+  padding: 0 0.08em;
+}
+.photo-slot {
+  background:
+    radial-gradient(120% 90% at 20% 10%, #cfe6da 0%, transparent 55%),
+    radial-gradient(90% 80% at 90% 90%, #d6e6f0 0%, transparent 60%),
+    linear-gradient(160deg, #eef6f1, #e2eef4);
+}
+
+/* ---- Staff POS ---- */
+.pos {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+.pos :focus-visible {
+  outline: 2px solid var(--color-rx);
+  outline-offset: 2px;
+}
+@media print {
+  @page { margin: 10mm; }
+  body { background: #fff; }
+}
+
+/* 80mm thermal receipt: named page so only receipts use the narrow paper size */
+@page receipt { size: 80mm auto; margin: 3mm; }
+@media print {
+  .receipt-80 { page: receipt; width: 74mm; max-width: 74mm; font-size: 11px; }
+  .receipt-80 table { font-size: 10px; }
+}

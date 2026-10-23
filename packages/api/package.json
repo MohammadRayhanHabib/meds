@@ -1,0 +1,25 @@
+{
+  "name": "@qsi-medicine/api",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit",
+    "test": "bun test test"
+  },
+  "dependencies": {
+    "@qsi-medicine/auth": "workspace:*",
+    "@qsi-medicine/db": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "better-auth": "catalog:",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@qsi-medicine/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

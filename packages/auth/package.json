@@ -1,0 +1,22 @@
+{
+  "name": "@qsi-medicine/auth",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@better-auth/drizzle-adapter": "1.7.5",
+    "@qsi-medicine/db": "workspace:*",
+    "better-auth": "catalog:",
+    "drizzle-orm": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@qsi-medicine/config": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
